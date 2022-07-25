@@ -1,0 +1,33 @@
+server:
+  port: 8085
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DATABASE_HOSTNAME:localhost}:${DATABASE_PORT:3306}/testDb?createDatabaseIfNotExist=true
+    username: root
+    password: ${DATABASE_PASSWORD:123123}
+
+  cache:
+    type: redis
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+
+  redis:
+    host: localhost
+    port: 6379
+
+  jpa:
+    database: mysql
+    generate-ddl: false
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        sql: TRACE
+
+
